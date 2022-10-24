@@ -88,3 +88,30 @@ where first_name like 'L%';
 select first_name, last_name, salary
 from employees
 where first_name like '%am%';
+
+
+
+
+--**NULL
+--아무런 갑도 정해지지 않았음을 의미 -> 0이 아님
+--어떠한 데이터 타입에도 사용가능
+--not null이나 primary key 속성에는 사용할 수 없음
+--null을 포함한 산술식은 무조건 null
+
+
+
+--** is null / is not null 연산 (in ORACLE)
+select first_name, salary, commission_pct
+from employees
+where commission_pct is null;
+
+--커미션비율이 있는 사원의 이름과 연봉 커미션비율을 출력하세요
+select first_name, salary, commission_pct
+from employees
+where commission_pct is NOT null ;
+
+--담당매니저가 없고 커미션비율이 없는 직원의 이름을 출력하세요
+select e.first_name
+from employees e
+where commission_pct IS NULL
+AND e.MANAGER_ID IS null;
