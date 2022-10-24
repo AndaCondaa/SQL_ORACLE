@@ -69,3 +69,38 @@ WHERE e.DEPARTMENT_ID IN (10, 90, 100);
 SELECT e.FIRST_NAME , e.SALARY 
 FROM EMPLOYEES e 
 WHERE (e.FIRST_NAME LIKE '%s%') OR (e.FIRST_NAME  LIKE '%S%');
+
+
+SELECT e.FIRST_NAME , e.SALARY 
+FROM EMPLOYEES e 
+WHERE UPPER(e.FIRST_NAME) LIKE '%S%';
+
+
+
+
+--8. 전체 부서를 출력하려고 합니다. 순서는 부서이름이 긴 순서대로 출력해 보세오.
+
+SELECT  d.DEPARTMENT_NAME 
+FROM DEPARTMENTS d  
+ORDER BY LENGTH(d.DEPARTMENT_NAME) desc;
+
+
+
+--9.정확하지 않지만, 지사가 있을 것으로 예상되는 나라들을 나라이름을 대문자로 출력하고
+--오름차순(ASC)으로 정렬해 보세오.
+
+SELECT UPPER(c.COUNTRY_NAME) 
+FROM COUNTRIES c 
+ORDER BY c.COUNTRY_NAME ASC ; 
+
+
+
+--10.입사일이 2003/12/31 일 이전 입사한 직원의 이름, 월급, 전화 번호, 입사일을 출력하세요
+--전화번호는 545-343-3433 과 같은 형태로 출력하시오.
+
+SELECT e.LAST_NAME , e.SALARY , REPLACE(e.PHONE_NUMBER, '.', '-')  , e.HIRE_DATE 
+FROM EMPLOYEES e 
+WHERE e.HIRE_DATE <= '2003/12/31';
+
+
+
