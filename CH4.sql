@@ -70,3 +70,21 @@ from
 	 order by salary DESC
 	) ;
 
+
+SELECT 
+	rn,
+	first_name,
+	salary
+FROM (SELECT rownum rn,
+			 first_name,
+			 salary
+	  FROM (SELECT   first_name,
+	  			     salary
+	  		FROM     EMPLOYEES
+	  		ORDER BY salary DESC)
+	  )
+WHERE rn >= 11
+AND rn <= 20;
+
+	
+	
